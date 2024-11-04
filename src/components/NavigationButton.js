@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaHome, FaUser, FaCode, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaUser , FaCode, FaEnvelope } from 'react-icons/fa';
 
 function NavigationButton() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { path: '/', label: 'Home', icon: <FaHome size={24} />, position: { left: '-165px', bottom: '0px' } },
-    { path: '/about', label: 'About', icon: <FaUser size={24} />, position: { left: '-70px', bottom: '160px' } },
-    { path: '/projects', label: 'Projects', icon: <FaCode size={24} />, position: { left: '100px', bottom: '160px' } },
-    { path: '/contact', label: 'Contact', icon: <FaEnvelope size={24} />, position: { left: '200px', bottom: '0px' } },
+    { path: '/', label: 'Home', icon: <FaHome size={50} />, position: { left: '-225px', bottom: '0px' } }, // Change size here
+    { path: '/about', label: 'About', icon: <FaUser  size={50} />, position: { left: '-100px', bottom: '190px' } }, // Change size here
+    { path: '/projects', label: 'Projects', icon: <FaCode size={50} />, position: { left: '100px', bottom: '190px' } }, // Change size here
+    { path: '/contact', label: 'Contact', icon: <FaEnvelope size={50} />, position: { left: '205px', bottom: '0px' } }, // Change size here
   ];
 
   return (
@@ -41,15 +41,15 @@ function NavigationButton() {
                   ...item.position
                 }}
               >
-                <Link
-                  to={item.path}
-                  className="flex items-center justify-center w-14 h-14 rounded-full bg-white text-black hover:bg-gray-200 transition-all duration-300 shadow-lg group"
-                  title={item.label}
-                >
-                  <div className="text-gray-800 group-hover:text-gray-600 transition-colors">
-                    {item.icon}
-                  </div>
-                </Link>
+               <Link
+        to={item.path}
+          className="flex items-center justify-center w-32 h-32 rounded-full bg-white text-black hover:bg-gray-200 transition-all duration-300 shadow-lg group"
+          title={item.label}
+        >
+          <div className="text-gray-800 group-hover:text-gray-600 transition-colors">
+          {item.icon}
+          </div>
+        </Link>
               </motion.div>
             ))}
           </div>

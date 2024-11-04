@@ -2,22 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NavigationButton from './components/NavigationButton';
-import backgroundImage from './images/profile-bg.png'; // Import the image
+import profileBg from './components/profile-bg.png';
+import AboutPage from './components/AboutPage';  
+
+
 
 function App() {
   return (
     <Router>
-      <div className="relative flex flex-col md:flex-row h-screen bg-black overflow-hidden">
-        {/* Background Image Area */}
-        <div 
-          className="w-full md:w-1/3 bg-cover bg-center"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        >
-          {/* You can add content over the background image here if needed */}
-        </div>
-
-        {/* Main Content Area */}
-        <div className="w-full md:w-2/3 bg-black p-4 relative">
+      <div className="relative h-screen bg-black overflow-y-auto">
+        <div className="relative z-10 w-full h-full">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -25,31 +19,47 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </div>
-
-        {/* Navigation Button */}
         <NavigationButton />
       </div>
     </Router>
   );
 }
 
-// Placeholder components for each route
 function HomePage() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="text-center mt-20"
-    >
-      <h1 className="text-4xl font-bold text-white">Welcome to My Portfolio</h1>
-      <p className="text-xl text-gray-300 mt-4">Frontend Developer & Designer</p>
-    </motion.div>
-  );
-}
+    <div className="relative h-full w-full">
+      {/* Background Image - Left side */}
+      <div 
+        className="absolute left-0 top-0 w-2/5 h-full bg-cover bg-no-repeat bg-left"
+        style={{ backgroundImage: `url(${profileBg})` }}
+      ></div>
 
-function AboutPage() {
-  return <h2 className="text-2xl text-white">About Me</h2>;
+      {/* Content - Right side */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="absolute right-0 top-0 w-3/5 h-full flex flex-col items-end justify-start pt-20 pr-20"
+      >
+        <motion.h1 
+          className="text-5xl font-bold text-white mb-4 text-right"
+          initial={{ y: -20 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.2, type: 'spring' }}
+        >
+          I am Sandun Liyanage
+        </motion.h1>
+        <motion.p 
+          className="text-2xl text-gray-300 mb-8 text-right"
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.4, type: 'spring' }}
+        >
+          Software Engineer | Web Developer | Mobile Developer
+        </motion.p>
+      </motion.div>
+    </div>
+  );
 }
 
 function ProjectsPage() {
