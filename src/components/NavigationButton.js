@@ -7,14 +7,14 @@ function NavigationButton() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { path: '/', label: 'Home', icon: <FaHome size={50} />, position: { left: '-225px', bottom: '0px' } }, // Change size here
-    { path: '/about', label: 'About', icon: <FaUser  size={50} />, position: { left: '-100px', bottom: '190px' } }, // Change size here
-    { path: '/projects', label: 'Projects', icon: <FaCode size={50} />, position: { left: '100px', bottom: '190px' } }, // Change size here
-    { path: '/contact', label: 'Contact', icon: <FaEnvelope size={50} />, position: { left: '205px', bottom: '0px' } }, // Change size here
+    { path: '/', label: 'Home', icon: <FaHome size={30} />, position: { left: '8px', bottom: '410px' } }, // Change size here
+    { path: '/about', label: 'About', icon: <FaUser  size={30} />, position: { left: '8px', bottom: '310px' } }, // Change size here
+    { path: '/projects', label: 'Projects', icon: <FaCode size={30} />, position: { left: '8px', bottom: '210px' } }, // Change size here
+    { path: '/contact', label: 'Contact', icon: <FaEnvelope size={30} />, position: { left: '8px', bottom: '110px' } }, // Change size here
   ];
 
   return (
-    <div className="fixed bottom-8 right-1/3 transform -translate-x-1/2 z-50">
+    <div className="fixed bottom-8 right-0 transform -translate-x-1/2 z-50">
       {/* Navigation Menu */}
       {isOpen && (
         <motion.div 
@@ -43,7 +43,7 @@ function NavigationButton() {
               >
                <Link
         to={item.path}
-          className="flex items-center justify-center w-32 h-32 rounded-full bg-white text-black hover:bg-gray-200 transition-all duration-300 shadow-lg group"
+          className="flex items-center justify-center w-20 h-20 rounded-full bg-white text-black hover:bg-gray-200 transition-all duration-300 shadow-lg group"
           title={item.label}
         >
           <div className="text-gray-800 group-hover:text-gray-600 transition-colors">

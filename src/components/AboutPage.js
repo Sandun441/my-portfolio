@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-black text-white p-8">
@@ -24,11 +25,11 @@ const AboutPage = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="w-full h-[400px] bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg overflow-hidden">
+          <div className="w-full h-[750px] relative">
             <img
-              src="/your-profile-image.jpg" // Add your image path here
+              src="/cv.png" // Add your image path here
               alt="Profile"
-              className="w-full h-full object-cover mix-blend-overlay"
+              className="w-full h-full object-cover"
             />
           </div>
         </motion.div>

@@ -39,7 +39,7 @@ function HomePage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="absolute right-0 top-0 w-3/5 h-full flex flex-col items-end justify-start pt-20 pr-20"
+        className="absolute right-44 top-0 w-3/5 h-full flex flex-col items-end justify-start pt-20 pr-20"
       >
         <motion.h1 
           className="text-5xl font-bold text-white mb-4 text-right"
