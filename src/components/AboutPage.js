@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-black text-white p-8">
@@ -26,18 +25,40 @@ const AboutPage = () => {
           className="relative"
         >
           <div className="w-full h-[750px] relative">
-            <img
-              src="/cv.png" // Add your image path here
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
+            <motion.a
+              href="https://drive.google.com/file/d/1DsUkFU_8zacu9eF7-1-HmSvJNaRCIoLI/view" // Replace with your actual link
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }} // Scale up on hover
+              whileTap={{ scale: 0.95 }} // Scale down on tap
+              className="relative block" // Make the anchor block-level for positioning
+            >
+              <motion.img
+                src="/cv.png" // Add your image path here
+                alt="Profile"
+                className="w-full h-full object-cover cursor-pointer"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }} // Fade in animation
+              />
+              
+              {/* Tooltip Overlay */}
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 text-white text-lg font-bold opacity-0 hover:opacity-100 transition-opacity duration-300"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }} // Show on hover
+              >
+                Click to View CV
+              </motion.div>
+            </motion.a>
           </div>
         </motion.div>
 
         {/* Bio Section */}
         <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }} // Start slightly below
+          animate={{ opacity: 1, y: 0 }} // Fade in and move to original position
           transition={{ duration: 0.8, delay: 0.4 }}
           className="space-y-6"
         >
@@ -48,42 +69,54 @@ const AboutPage = () => {
           </p>
           
           {/* Skills Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="space-y-4"
-          >
-            <h3 className="text-2xl font-semibold">Technical Skills</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                "React", "Node.js", "JavaScript", "TypeScript",
-                "Python", "AWS", "Docker", "MongoDB"
-              ].map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  className="bg-gray-800 p-3 rounded-lg text-center hover:bg-blue-500 transition-colors"
-                >
-                  {skill}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                   
+                    {/* Skills Section */}
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.6, delay: 0.6 }} // Fade in for the entire section
+  className="space-y-4"
+>
+  <h3 className="text-2xl font-semibold">Technical Skills</h3>
+  <div className="grid grid-cols-2 gap-4">
+    {[
+      "React", "Node.js", "JavaScript", "TypeScript",
+      "Python", "AWS", "Docker", "MongoDB"
+    ].map((skill, index) => (
+      <motion.div
+        key={skill}
+        initial={{ opacity: 0, y: 20 }} // Start slightly below
+        animate={{ opacity: 1, y: 0 }} // Fade in and move to original position
+        transition={{ 
+          delay: 0.8 + index * 0.1, // Staggered delay for each skill
+          type: "spring", // Use spring animation for a bouncy effect
+          stiffness: 100 // Control the stiffness of the spring
+        }}
+        whileHover={{ 
+          scale: 1.05, // Scale up slightly
+          backgroundColor: "#3b82f6", // Change background color to blue
+          boxShadow: "0px 4px 20px rgba(59, 130, 246, 0.5)", // Add shadow effect
+          transition: { duration: 0.3 } // Smooth transition for hover effects
+        }} 
+        className="bg-gray-800 p-3 rounded-lg text-center transition-colors cursor-pointer"
+      >
+        {skill}
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
         </motion.div>
       </div>
 
       {/* Experience Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="mt-20 max-w-6xl mx-auto"
+        animate={{ opacity:  1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="mt-16"
       >
-        <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
-        <div className="space-y-8">
+        <h2 className="text-3xl font-bold text-blue-500">Experience</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
           {[
             {
               title: "Senior Software Engineer",
@@ -100,8 +133,8 @@ const AboutPage = () => {
           ].map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -50 }} // Start from the left
+              animate={{ opacity: 1, x: 0 }} // Slide in to the center
               transition={{ delay: 1.2 + index * 0.2 }}
               className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors"
             >
@@ -113,11 +146,11 @@ const AboutPage = () => {
         </div>
       </motion.div>
 
-      {/* Contact CTA */}
+      {/* Contact CTA Section */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
+        initial={{ opacity: 0, scale: 0.8 }} // Start small and invisible
+        animate={{ opacity: 1, scale: 1 }} // Scale up to normal size
+        transition={{ duration: 0.6, delay: 1.6 }} // Smooth transition
         className="text-center mt-20"
       >
         <h2 className="text-2xl font-bold mb-4">Let's Work Together</h2>
